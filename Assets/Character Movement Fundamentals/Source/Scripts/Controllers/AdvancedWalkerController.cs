@@ -225,7 +225,7 @@ namespace CMF
 			if(characterInput == null)
 				return false;
 
-			return characterInput.IsJumpKeyPressed();
+			return characterInput.IsJumpKeyPressed;
 		}
 
 		//Determine current controller state based on current momentum and whether the controller is grounded (or not);

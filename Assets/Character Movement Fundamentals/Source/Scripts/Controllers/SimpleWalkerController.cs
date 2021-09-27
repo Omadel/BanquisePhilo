@@ -58,7 +58,7 @@ namespace CMF
             }
 
             //Handle jumping;
-            if ((characterInput != null) && isGrounded && characterInput.IsJumpKeyPressed())
+            if ((characterInput != null) && isGrounded && characterInput.IsJumpKeyPressed)
             {
                 OnJumpStart();
                 currentVerticalSpeed = jumpSpeed;

@@ -1,0 +1,131 @@
+{
+    "name": "Inputs",
+    "maps": [
+        {
+            "name": "PlayerMovement",
+            "id": "b0c10c88-8bbc-4fc2-9c5e-d43089be01f2",
+            "actions": [
+                {
+                    "name": "MovementAxis",
+                    "type": "Value",
+                    "id": "0f9f3d0f-7c46-435b-ad28-95422055113f",
+                    "expectedControlType": "Vector2",
+                    "processors": "",
+                    "interactions": ""
+                },
+                {
+                    "name": "Jump",
+                    "type": "Button",
+                    "id": "50a95a08-e2dc-45da-b203-d8e0f425ace0",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
+                },
+                {
+                    "name": "Sprint",
+                    "type": "Button",
+                    "id": "b9033b81-618e-46a0-b618-8ac7adb54075",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "KeyboardInputs",
+                    "id": "3ae683d2-fe7f-4046-9214-1e5ea2984728",
+                    "path": "2DVector",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "MovementAxis",
+                    "isComposite": true,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "up",
+                    "id": "4e5b1004-be9b-4206-9467-39970e22efb1",
+                    "path": "<Keyboard>/w",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "MovementAxis",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "down",
+                    "id": "7add685e-77b0-4a45-9e90-9eef65899eec",
+                    "path": "<Keyboard>/s",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "MovementAxis",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "left",
+                    "id": "f23cafcc-9525-4fe0-9467-25ec0df44e99",
+                    "path": "<Keyboard>/a",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "MovementAxis",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "right",
+                    "id": "537844c4-e06f-47b8-810b-f051391613b9",
+                    "path": "<Keyboard>/d",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "MovementAxis",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "",
+                    "id": "f747a629-f399-4f95-ab93-fe1084fee61e",
+                    "path": "<Gamepad>/leftStick",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "MovementAxis",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        },
+        {
+            "name": "CameraControl",
+            "id": "66468ed9-b1dc-44b4-83fd-5b4762734d8e",
+            "actions": [
+                {
+                    "name": "Rotation",
+                    "type": "Value",
+                    "id": "40f43087-e95f-4be2-a273-0bce4230f36e",
+                    "expectedControlType": "Vector2",
+                    "processors": "",
+                    "interactions": ""
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "0690663d-4834-498c-96c1-3b002b5de895",
+                    "path": "<Mouse>/delta",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Rotation",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        }
+    ],
+    "controlSchemes": []
+}
