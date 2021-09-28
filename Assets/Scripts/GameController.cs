@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
+using DG.Tweening;
 
 public class GameController : MonoBehaviour
 {
@@ -81,5 +82,19 @@ public class GameController : MonoBehaviour
             bearTriggerObjective = false;
             PressButtonDisplay.instance.Disable();
         }
+    }
+
+    [ContextMenu("Win !")]
+    public void WinGame() {
+        m_GameState = GameSate.EndGame;
+        var cam = Camera.main;
+        var cameraTarget = cam.transform.parent;
+
+        cam.farClipPlane = 5000;
+        cameraTarget.transform.DODynamicLookAt(new Vector3(0, -500, 0), 5f)
+            .SetEase(Ease.InOutSine);
+        cameraTarget.transform.DOLocalMoveZ(-3000f, 5f)
+            .SetEase(Ease.InOutCubic);
+
     }
 }
