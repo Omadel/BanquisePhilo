@@ -14,6 +14,12 @@ public class TimeOfDayHandeler : Etienne.Singleton<TimeOfDayHandeler> {
         ReseTimeOfDay();
     }
 
+    private void Start()
+    {
+        start.GetComponent<ObjectiveInstance>().quadUI.SetActive(false);
+        objective.GetComponent<ObjectiveInstance>().quadUI.SetActive(true);
+    }
+
     private void Update() {
         float distanceFromStart = Vector3.Distance(player.transform.position, start.transform.position) / DistanceMax;
         name = distanceFromStart.ToString();
@@ -36,6 +42,8 @@ public class TimeOfDayHandeler : Etienne.Singleton<TimeOfDayHandeler> {
         start = objective;
         objective = oldStart;
         maxDistanceFromStart = 0;
+        start.GetComponent<ObjectiveInstance>().quadUI.SetActive(false);
+        objective.GetComponent<ObjectiveInstance>().quadUI.SetActive(true);
 
     }
 }

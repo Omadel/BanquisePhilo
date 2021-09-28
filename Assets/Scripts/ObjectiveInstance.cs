@@ -6,6 +6,8 @@ public class ObjectiveInstance : MonoBehaviour
     public static event Action<GameObject> OnPlayerTriggerEnterObjective;
     public static event Action<GameObject> OnPlayerTriggerExitObjective;
 
+    [SerializeField] public GameObject quadUI;
+
     private void OnTriggerEnter(Collider other)
     {
         if (other.tag == "Player")
