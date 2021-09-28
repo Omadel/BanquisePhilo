@@ -11,11 +11,18 @@ public class DayTransitionManager : MonoBehaviour
 
     public static event Action<string, string> InitDaytTransitionEvent;
 
+    public static event Action<GameController.GameSate> OnGameStateChange;
+
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.E))
         {
             InitDayTransition();
+        }
+
+        if (Input.GetKeyDown(KeyCode.A))
+        {
+            OnGameStateChange?.Invoke(GameController.GameSate.GoEat);
         }
     }
 
