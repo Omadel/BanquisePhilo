@@ -3,7 +3,7 @@ using UnityEngine;
 [RequireComponent(typeof(TimeOfDay))]
 public class TimeOfDayHandeler : Etienne.Singleton<TimeOfDayHandeler> {
     public float DistanceMax => Vector3.Distance(start.transform.position, objective.transform.position);
-
+    public GameObject Objective => objective;
     [SerializeField] private GameObject player, start, objective;
     [SerializeField] private float startTimeOfDay = 7f, speeOfTime = 8f;
     private TimeOfDay time;
