@@ -16,6 +16,8 @@ public class GameController : MonoBehaviour
 
     private bool bearTriggerObjective = false;
 
+    public CMF.SimpleWalkerController bearController;
+
     private void Awake()
     {
         actionButton.action.performed += _ => Action();
@@ -31,6 +33,24 @@ public class GameController : MonoBehaviour
     {
         ObjectiveInstance.OnPlayerTriggerEnterObjective += OnPlayerTriggerEnterObjective;
         ObjectiveInstance.OnPlayerTriggerExitObjective += OnPlayerTriggerExitObjective;
+    }
+
+    private void Update()
+    {
+        if(bearController.enabled == true)
+        {
+            if(m_GameState == GameSate.DayTransition)
+            {
+                bearController.enabled = false;
+            }
+        }
+        else
+        {
+            if(m_GameState != GameSate.DayTransition)
+            {
+                bearController.enabled = true;
+            }
+        }
     }
 
     private void Action()
