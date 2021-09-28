@@ -5,9 +5,9 @@ public class DayTransitionManager : MonoBehaviour
 {
     public static DayTransitionManager instance;
 
-    [SerializeField] private string[] dayTexts = new string[0];
+    [SerializeField] public string[] dayTexts = new string[0];
 
-    private int dayIndex = 0;
+    public int dayIndex = 0;
 
     public static event Action<string, string> InitDaytTransitionEvent;
 
@@ -44,8 +44,6 @@ public class DayTransitionManager : MonoBehaviour
         }
 
         InitDaytTransitionEvent?.Invoke(tempPreviousDayText, tempCurrDayText);
-
-        TimeOfDayHandeler.Instance.ReseTimeOfDay();
 
         dayIndex++;
     }

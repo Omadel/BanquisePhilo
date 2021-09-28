@@ -12,10 +12,10 @@ public class DayTransitionDisplay : MonoBehaviour
 
     private void Awake()
     {
-        background.alpha = 0;
-        currDayText.alpha = 0;
-        previousDayText.alpha = 0;
-        roleDay.alpha = 0;
+        //background.alpha = 0;
+        //currDayText.alpha = 0;
+        //previousDayText.alpha = 0;
+        //roleDay.alpha = 0;
         roleDay.transform.localPosition = new Vector3(0, -100);
     }
     private void Start()
@@ -29,7 +29,14 @@ public class DayTransitionDisplay : MonoBehaviour
 
         SetDayText(newPreviousDayText, newCurrDayText);
 
-        background.LeanAlpha(1, 2f);
+        background.LeanAlpha(1, 2f).setOnComplete(() => {
+            if(DayTransitionManager.instance.dayIndex != 1)
+            {
+                TimeOfDayHandeler.Instance.Swap();
+            }
+            TimeOfDayHandeler.Instance.ReseTimeOfDay();
+            });
+
 
         previousDayText.LeanAlpha(1, 1f).delay = 2f;
         roleDay.LeanAlpha(1, 3f).delay = 2f;
@@ -41,9 +48,9 @@ public class DayTransitionDisplay : MonoBehaviour
         currDayText.transform.LeanMoveLocalX(0, 2f).setEaseInOutBack().delay = 3f;
         currDayText.LeanAlpha(1, 3f).delay = 3f;
 
-        currDayText.LeanAlpha(0, 2f).delay = 7f;
-        roleDay.LeanAlpha(0, 2f).delay = 7f;
-        background.LeanAlpha(0, 2f).setOnComplete(ResetDayTransition).delay = 8f;
+        currDayText.LeanAlpha(0, 2f).delay = 5.5f;
+        roleDay.LeanAlpha(0, 2f).delay = 5.5f;
+        background.LeanAlpha(0, 2f).setOnComplete(ResetDayTransition).delay = 6.5f;
     }
 
     private void ResetDayTransition()

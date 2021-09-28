@@ -8,9 +8,9 @@ public class GameController : MonoBehaviour
 
     [SerializeField] private InputActionReference actionButton;
 
-    public enum GameSate {StartGame, GoEat, GoSleep, DayTransition, EndGame}
+    public enum GameSate {GoEat, GoSleep, DayTransition, EndGame}
 
-    public GameSate m_GameState = GameSate.StartGame;
+    public GameSate m_GameState = GameSate.DayTransition;
 
     private bool bearTriggerObjective = false;
 
@@ -37,18 +37,25 @@ public class GameController : MonoBehaviour
 
         if (bearTriggerObjective)
         {
-            TimeOfDayHandeler.Instance.Swap();
             PressButtonDisplay.instance.Disable();
 
             if (m_GameState == GameSate.GoEat)
             {
+                TimeOfDayHandeler.Instance.Swap();
                 m_GameState = GameSate.GoSleep;
             }
 
             else if (m_GameState == GameSate.GoSleep)
             {
-                m_GameState = GameSate.DayTransition;
-                DayTransitionManager.instance.InitDayTransition();
+                if(DayTransitionManager.instance.dayIndex == DayTransitionManager.instance.dayTexts.Length)
+                {
+                    WinGame();
+                }
+                else
+                {
+                    m_GameState = GameSate.DayTransition;
+                    DayTransitionManager.instance.InitDayTransition();
+                }
             }
             bearTriggerObjective = false;
         }
@@ -95,6 +102,5 @@ public class GameController : MonoBehaviour
             .SetEase(Ease.InOutSine);
         cameraTarget.transform.DOLocalMoveZ(-3000f, 5f)
             .SetEase(Ease.InOutCubic);
-
     }
 }
