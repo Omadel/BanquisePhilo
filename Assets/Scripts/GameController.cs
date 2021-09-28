@@ -15,7 +15,10 @@ public class GameController : MonoBehaviour {
 
     private bool bearTriggerObjective = false;
 
-    private void Awake() {
+    public CMF.SimpleWalkerController bearController;
+
+    private void Awake()
+    {
         actionButton.action.performed += _ => Action();
         instance = this;
     }
@@ -29,10 +32,27 @@ public class GameController : MonoBehaviour {
         ObjectiveInstance.OnPlayerTriggerExitObjective += OnPlayerTriggerExitObjective;
     }
 
-    private void Action() {
-        if(m_GameState != GameSate.GoEat && m_GameState != GameSate.GoSleep) {
-            return;
+    private void Update()
+    {
+        if(bearController.enabled == true)
+        {
+            if(m_GameState == GameSate.DayTransition)
+            {
+                bearController.enabled = false;
+            }
         }
+        else
+        {
+            if(m_GameState != GameSate.DayTransition)
+            {
+                bearController.enabled = true;
+            }
+        }
+    }
+
+    private void Action()
+    {
+        if (m_GameState != GameSate.GoEat && m_GameState != GameSate.GoSleep)  return; 
 
         if(bearTriggerObjective) {
             PressButtonDisplay.instance.Disable();
