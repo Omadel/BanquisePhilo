@@ -1,7 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 using TMPro;
 
 public class DayTransitionDisplay : MonoBehaviour
@@ -59,6 +56,8 @@ public class DayTransitionDisplay : MonoBehaviour
         previousDayText.transform.localPosition = new Vector2(0, 0);
         currDayText.transform.localPosition = new Vector2(1500, 0);
         roleDay.transform.localPosition = new Vector3(0, -100);
+
+        GameController.instance.ChangeGameState(GameController.GameSate.GoEat);
     }
 
     public void SetDayText(string newPreviousDayText, string newCurrentDayText)

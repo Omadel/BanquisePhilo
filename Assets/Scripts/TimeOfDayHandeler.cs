@@ -11,7 +11,7 @@ public class TimeOfDayHandeler : Etienne.Singleton<TimeOfDayHandeler> {
     protected override void Awake() {
         base.Awake();
         time = GetComponent<TimeOfDay>();
-        time.SetTime(startTimeOfDay);
+        ReseTimeOfDay();
     }
 
     private void Update() {
@@ -22,6 +22,11 @@ public class TimeOfDayHandeler : Etienne.Singleton<TimeOfDayHandeler> {
             time.SetTime(timeofDay * speeOfTime + startTimeOfDay);
             maxDistanceFromStart = distanceFromStart;
         }
+    }
+
+    public void ReseTimeOfDay()
+    {
+        time.SetTime(startTimeOfDay);
     }
 
     [ContextMenu("Swap")]

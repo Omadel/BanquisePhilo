@@ -1,34 +1,30 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class DayTransitionManager : MonoBehaviour
 {
+    public static DayTransitionManager instance;
+
     [SerializeField] private string[] dayTexts = new string[0];
 
     private int dayIndex = 0;
 
     public static event Action<string, string> InitDaytTransitionEvent;
 
-    public static event Action<GameController.GameSate> OnGameStateChange;
-
-    private void Update()
+    private void Awake()
     {
-        if (Input.GetKeyDown(KeyCode.E))
-        {
-            InitDayTransition();
-        }
-
-        if (Input.GetKeyDown(KeyCode.A))
-        {
-            OnGameStateChange?.Invoke(GameController.GameSate.GoEat);
-        }
+        instance = this;
     }
 
-    private void InitDayTransition()
+    private void Start()
+    {
+        InitDayTransition();
+    }
+
+    public void InitDayTransition()
     {
         if(dayIndex >= dayTexts.Length) { return; }
+        Debug.Log("sds");
 
         string tempPreviousDayText;
         string tempCurrDayText;
@@ -48,7 +44,7 @@ public class DayTransitionManager : MonoBehaviour
             tempCurrDayText = dayTexts[dayIndex];
         }
 
-        InitDaytTransitionEvent.Invoke(tempPreviousDayText, tempCurrDayText);
+        InitDaytTransitionEvent?.Invoke(tempPreviousDayText, tempCurrDayText);
 
         dayIndex++;
     }
