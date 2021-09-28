@@ -1603,11 +1603,23 @@ MonoBehaviour:
   - {fileID: 1868490464}
   - {fileID: 2053475972}
   m_GameState: 2
+  bearController: {fileID: 1475334033}
 --- !u!1 &1475334031 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6927317017807178399, guid: 1ff6488b9d634ef42bece16a84dd3c8d, type: 3}
   m_PrefabInstance: {fileID: 6928746982990727787}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1475334033 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7039769291336659479, guid: 1ff6488b9d634ef42bece16a84dd3c8d, type: 3}
+  m_PrefabInstance: {fileID: 6928746982990727787}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1475334031}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1a380e2958019be4289ebe9d5bf5d649, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!20 &1485179972 stripped
 Camera:
   m_CorrespondingSourceObject: {fileID: 6949005540220596381, guid: 1ff6488b9d634ef42bece16a84dd3c8d, type: 3}
