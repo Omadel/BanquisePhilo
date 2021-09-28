@@ -3,14 +3,13 @@ using UnityEngine.UI;
 
 public class PointToObjective : MonoBehaviour {
     [SerializeField] private TimeOfDayHandeler timeOfDayHandeler;
-    [SerializeField] private Transform lookAt;
     [SerializeField] private Sprite insideSprite, outsideSprite;
     [SerializeField] private Side side;
     [SerializeField] private Vector2 stateOffset = new Vector2(192, 108);
     private Camera cam;
     private RectTransform canvas;
     private Image image;
-    private new DoTween2DAnimation[] animations;
+    private DoTween2DAnimation[] animations;
 
     private enum Side { Inside, Up, Left, Down, Right }
     private Vector2[] offsets = new Vector2[] { new Vector2(0, 45), new Vector2(0, 0), new Vector2(0, 25), new Vector2(0, 0), new Vector2(0, 20), };
@@ -24,7 +23,7 @@ public class PointToObjective : MonoBehaviour {
     }
 
     private void Update() {
-        Vector3 pos = cam.WorldToScreenPoint(lookAt.position);
+        Vector3 pos = cam.WorldToScreenPoint(timeOfDayHandeler.Objective.transform.position);
         if(transform.position != pos) {
             if(IsClampToCanvas(out Vector3 localPos, pos)) {
                 image.sprite = outsideSprite;
