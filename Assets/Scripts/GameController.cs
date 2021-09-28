@@ -1,8 +1,11 @@
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class GameController : MonoBehaviour
 {
     public static GameController instance;
+
+    [SerializeField] private InputActionReference actionButton;
 
     public enum GameSate {StartGame, GoEat, GoSleep, DayTransition, EndGame}
 
@@ -12,7 +15,13 @@ public class GameController : MonoBehaviour
 
     private void Awake()
     {
+        actionButton.action.performed += _ => Action();
         instance = this;
+    }
+
+    private void OnEnable()
+    {
+        actionButton.action.Enable();
     }
 
     private void Start()
@@ -21,29 +30,26 @@ public class GameController : MonoBehaviour
         ObjectiveInstance.OnPlayerTriggerExitObjective += OnPlayerTriggerExitObjective;
     }
 
-    private void Update()
+    private void Action()
     {
-        if(m_GameState != GameSate.GoEat && m_GameState != GameSate.GoSleep) { return; }
+        if (m_GameState != GameSate.GoEat && m_GameState != GameSate.GoSleep)  return; 
 
         if (bearTriggerObjective)
         {
-            if (Input.GetKeyDown(KeyCode.E))
+            TimeOfDayHandeler.Instance.Swap();
+            PressButtonDisplay.instance.Disable();
+
+            if (m_GameState == GameSate.GoEat)
             {
-                TimeOfDayHandeler.Instance.Swap();
-                PressButtonDisplay.instance.Disable();
-
-                if (m_GameState == GameSate.GoEat)
-                {
-                    m_GameState = GameSate.GoSleep;
-                }               
-
-                else if(m_GameState == GameSate.GoSleep)
-                {
-                    m_GameState = GameSate.DayTransition;
-                    DayTransitionManager.instance.InitDayTransition();
-                }
-                bearTriggerObjective = false;
+                m_GameState = GameSate.GoSleep;
             }
+
+            else if (m_GameState == GameSate.GoSleep)
+            {
+                m_GameState = GameSate.DayTransition;
+                DayTransitionManager.instance.InitDayTransition();
+            }
+            bearTriggerObjective = false;
         }
     }
 

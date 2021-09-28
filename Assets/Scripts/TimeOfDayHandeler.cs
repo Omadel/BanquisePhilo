@@ -26,6 +26,7 @@ public class TimeOfDayHandeler : Etienne.Singleton<TimeOfDayHandeler> {
 
     public void ReseTimeOfDay()
     {
+        timeofDay =  0;
         time.SetTime(startTimeOfDay);
     }
 

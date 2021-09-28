@@ -24,7 +24,6 @@ public class DayTransitionManager : MonoBehaviour
     public void InitDayTransition()
     {
         if(dayIndex >= dayTexts.Length) { return; }
-        Debug.Log("sds");
 
         string tempPreviousDayText;
         string tempCurrDayText;
@@ -45,6 +44,8 @@ public class DayTransitionManager : MonoBehaviour
         }
 
         InitDaytTransitionEvent?.Invoke(tempPreviousDayText, tempCurrDayText);
+
+        TimeOfDayHandeler.Instance.ReseTimeOfDay();
 
         dayIndex++;
     }
