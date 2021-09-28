@@ -8,7 +8,8 @@ public class TimeOfDayHandeler : Etienne.Singleton<TimeOfDayHandeler> {
     [SerializeField] private float startTimeOfDay = 7f, speeOfTime = 8f;
     private TimeOfDay time;
     private float maxDistanceFromStart, timeofDay;
-    private void Awake() {
+    protected override void Awake() {
+        base.Awake();
         time = GetComponent<TimeOfDay>();
         time.SetTime(startTimeOfDay);
     }
