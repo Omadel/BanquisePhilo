@@ -1,7 +1,7 @@
 using UnityEngine;
 
 [RequireComponent(typeof(TimeOfDay))]
-public class TimeOfDayHandeler : MonoBehaviour {
+public class TimeOfDayHandeler : Etienne.Singleton<TimeOfDayHandeler> {
     public float DistanceMax => Vector3.Distance(start.transform.position, objective.transform.position);
 
     [SerializeField] private GameObject player, start, objective;
