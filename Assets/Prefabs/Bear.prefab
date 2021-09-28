@@ -176,6 +176,7 @@ GameObject:
   - component: {fileID: 6982036991372063365}
   - component: {fileID: 7039769291336659479}
   - component: {fileID: 6928746983852710593}
+  - component: {fileID: 6771268156969661638}
   m_Layer: 0
   m_Name: Bear
   m_TagString: Player
@@ -289,6 +290,31 @@ MonoBehaviour:
   movementInputAxis: {fileID: 1554488599096087676, guid: aa68d3e8370706d41880ee2d05878c70, type: 3}
   jumpInput: {fileID: -7214147260080772540, guid: aa68d3e8370706d41880ee2d05878c70, type: 3}
   sprintInput: {fileID: 7072938235146636733, guid: aa68d3e8370706d41880ee2d05878c70, type: 3}
+--- !u!114 &6771268156969661638
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6927317017807178399}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 82bbf1486edb5bb4e8240c8deb88cabb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  frontRightFoot: {fileID: 0}
+  frontLeftFoot: {fileID: 0}
+  backRightFoot: {fileID: 0}
+  backLeftFoot: {fileID: 0}
+  footstepPrefab: {fileID: 8739986646140642891, guid: 12363ebc8c34d2347bc806feb4242b45, type: 3}
+  cue:
+    clips:
+    - {fileID: 8300000, guid: 59577c38110b7b548af6a309f30f117a, type: 3}
+    parameters:
+      volume: 1
+      pitch: 1
+      loop: 0
+      spacialBlend: 0
 --- !u!1 &6927399887046066067
 GameObject:
   m_ObjectHideFlags: 0
