@@ -1,60 +1,49 @@
-using UnityEngine;
-using UnityEngine.InputSystem;
 using DG.Tweening;
 using System.Collections;
+using UnityEngine;
+using UnityEngine.InputSystem;
 
-public class GameController : MonoBehaviour
-{
+public class GameController : MonoBehaviour {
     public static GameController instance;
 
     [SerializeField] private InputActionReference actionButton;
     [SerializeField] private GameObject[] maps;
 
-    public enum GameSate {GoEat, GoSleep, DayTransition, EndGame}
+    public enum GameSate { GoEat, GoSleep, DayTransition, EndGame }
 
     public GameSate m_GameState = GameSate.DayTransition;
 
     private bool bearTriggerObjective = false;
 
-    private void Awake()
-    {
+    private void Awake() {
         actionButton.action.performed += _ => Action();
         instance = this;
     }
 
-    private void OnEnable()
-    {
+    private void OnEnable() {
         actionButton.action.Enable();
     }
 
-    private void Start()
-    {
+    private void Start() {
         ObjectiveInstance.OnPlayerTriggerEnterObjective += OnPlayerTriggerEnterObjective;
         ObjectiveInstance.OnPlayerTriggerExitObjective += OnPlayerTriggerExitObjective;
     }
 
-    private void Action()
-    {
-        if (m_GameState != GameSate.GoEat && m_GameState != GameSate.GoSleep)  return; 
+    private void Action() {
+        if(m_GameState != GameSate.GoEat && m_GameState != GameSate.GoSleep) {
+            return;
+        }
 
-        if (bearTriggerObjective)
-        {
+        if(bearTriggerObjective) {
             PressButtonDisplay.instance.Disable();
 
-            if (m_GameState == GameSate.GoEat)
-            {
+            if(m_GameState == GameSate.GoEat) {
                 TimeOfDayHandeler.Instance.Swap();
                 m_GameState = GameSate.GoSleep;
-            }
-
-            else if (m_GameState == GameSate.GoSleep)
-            {
-                if(DayTransitionManager.instance.dayIndex == DayTransitionManager.instance.dayTexts.Length)
-                {
+            } else if(m_GameState == GameSate.GoSleep) {
+                if(DayTransitionManager.instance.dayIndex == DayTransitionManager.instance.dayTexts.Length) {
                     WinGame();
-                }
-                else
-                {
+                } else {
                     m_GameState = GameSate.DayTransition;
                     DayTransitionManager.instance.InitDayTransition();
                 }
@@ -63,31 +52,23 @@ public class GameController : MonoBehaviour
         }
     }
 
-    public void ChangeGameState(GameSate newGameState)
-    {
+    public void ChangeGameState(GameSate newGameState) {
         m_GameState = newGameState;
     }
 
-    private void OnPlayerTriggerEnterObjective(GameObject currObjective)
-    {
-        if (currObjective == TimeOfDayHandeler.Instance.Objective)
-        {
+    private void OnPlayerTriggerEnterObjective(GameObject currObjective) {
+        if(currObjective == TimeOfDayHandeler.Instance.Objective) {
             bearTriggerObjective = true;
-            if (m_GameState == GameSate.GoEat)
-            {
+            if(m_GameState == GameSate.GoEat) {
                 PressButtonDisplay.instance.Enable("Eat");
-            }
-            else if (m_GameState == GameSate.GoSleep)
-            {
+            } else if(m_GameState == GameSate.GoSleep) {
                 PressButtonDisplay.instance.Enable("Sleep");
             }
         }
     }
 
-    private void OnPlayerTriggerExitObjective(GameObject currObjective)
-    {
-        if (currObjective == TimeOfDayHandeler.Instance.Objective)
-        {
+    private void OnPlayerTriggerExitObjective(GameObject currObjective) {
+        if(currObjective == TimeOfDayHandeler.Instance.Objective) {
             bearTriggerObjective = false;
             PressButtonDisplay.instance.Disable();
         }
@@ -95,11 +76,7 @@ public class GameController : MonoBehaviour
 
     [ContextMenu("Win !")]
     public void WinGame() {
-        StartCoroutine(WinGameSequence());
-    }
-
-    public IEnumerator WinGameSequence() {
-        var animDuration = 5f;
+        float animDuration = 5f;
         m_GameState = GameSate.EndGame;
         Camera cam = Camera.main;
         Transform cameraTarget = cam.transform.parent;
@@ -110,11 +87,10 @@ public class GameController : MonoBehaviour
         cameraTarget.transform.DOLocalMoveZ(-3000f, animDuration)
             .SetEase(Ease.InOutCubic);
 
-        yield return new WaitForSeconds(1);
-
         if(maps != null) {
             foreach(GameObject map in maps) {
-                map.SetActive(false);
+                map.transform.DOScale(0, animDuration / 2f)
+                    .OnComplete(() => map.SetActive(false));
             }
         }
     }
