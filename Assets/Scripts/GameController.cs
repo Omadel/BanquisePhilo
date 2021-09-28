@@ -1,12 +1,14 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 using DG.Tweening;
+using System.Collections;
 
 public class GameController : MonoBehaviour
 {
     public static GameController instance;
 
     [SerializeField] private InputActionReference actionButton;
+    [SerializeField] private GameObject[] maps;
 
     public enum GameSate {GoEat, GoSleep, DayTransition, EndGame}
 
@@ -93,14 +95,27 @@ public class GameController : MonoBehaviour
 
     [ContextMenu("Win !")]
     public void WinGame() {
+        StartCoroutine(WinGameSequence());
+    }
+
+    public IEnumerator WinGameSequence() {
+        var animDuration = 5f;
         m_GameState = GameSate.EndGame;
-        var cam = Camera.main;
-        var cameraTarget = cam.transform.parent;
+        Camera cam = Camera.main;
+        Transform cameraTarget = cam.transform.parent;
 
         cam.farClipPlane = 5000;
-        cameraTarget.transform.DODynamicLookAt(new Vector3(0, -500, 0), 5f)
+        cameraTarget.transform.DODynamicLookAt(new Vector3(0, -500, 0), animDuration)
             .SetEase(Ease.InOutSine);
-        cameraTarget.transform.DOLocalMoveZ(-3000f, 5f)
+        cameraTarget.transform.DOLocalMoveZ(-3000f, animDuration)
             .SetEase(Ease.InOutCubic);
+
+        yield return new WaitForSeconds(1);
+
+        if(maps != null) {
+            foreach(GameObject map in maps) {
+                map.SetActive(false);
+            }
+        }
     }
 }
