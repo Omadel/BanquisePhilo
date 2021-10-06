@@ -6,7 +6,10 @@ public class DayTransitionManager : MonoBehaviour
     public static DayTransitionManager instance;
 
     [SerializeField] public string[] dayTexts = new string[0];
+    [SerializeField] private GameObject bear, lear, objective, banquise;
     [SerializeField] private GameObject[] banquises = new GameObject[0];
+    [SerializeField] private Transform[] learPos = new Transform[0];
+    [SerializeField] private Transform[] objectivePos = new Transform[0];
 
     public int dayIndex = 0;
 
@@ -22,12 +25,14 @@ public class DayTransitionManager : MonoBehaviour
         InitDayTransition();
     }
 
+
     public void InitDayTransition()
     {
         if(dayIndex >= dayTexts.Length) { return; }
 
         string tempPreviousDayText;
         string tempCurrDayText;
+
         if (dayIndex == 0)
         {
             tempPreviousDayText = "";
@@ -44,16 +49,18 @@ public class DayTransitionManager : MonoBehaviour
             tempCurrDayText = dayTexts[dayIndex];
         }
 
+        if(banquise != null)
+        {
+            Destroy(banquise);
+        }
+
+        banquise = Instantiate(banquises[dayIndex], new Vector3(-50,0,0),Quaternion.identity);
+        lear.transform.position = learPos[dayIndex].position;
+        objective.transform.position = objectivePos[dayIndex].position;
+        //bear.transform.position = lear.transform.position + new Vector3(10, 0, 0);
+
         InitDaytTransitionEvent?.Invoke(tempPreviousDayText, tempCurrDayText);
 
         dayIndex++;
-    }
-
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.K))
-        {
-            Instantiate(banquises[0], new Vector3(-50,0,0), Quaternion.identity);
-        }
     }
 }
