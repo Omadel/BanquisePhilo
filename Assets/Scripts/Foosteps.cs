@@ -27,7 +27,7 @@ public class Foosteps : MonoBehaviour {
             GameObject footstep = GameObject.Instantiate(footstepPrefab, pos, footstepPrefab.transform.rotation);
             footstep.transform.forward = hit.normal;
             GameObject.Destroy(footstep, 15f);
-            Etienne.AudioManager.Play(cue, pos);
+            //Etienne.AudioManager.Play(cue, pos);
         }
     }
 }

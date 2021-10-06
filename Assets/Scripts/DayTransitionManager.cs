@@ -6,6 +6,7 @@ public class DayTransitionManager : MonoBehaviour
     public static DayTransitionManager instance;
 
     [SerializeField] public string[] dayTexts = new string[0];
+    [SerializeField] private GameObject[] banquises = new GameObject[0];
 
     public int dayIndex = 0;
 
@@ -46,5 +47,13 @@ public class DayTransitionManager : MonoBehaviour
         InitDaytTransitionEvent?.Invoke(tempPreviousDayText, tempCurrDayText);
 
         dayIndex++;
+    }
+
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.K))
+        {
+            Instantiate(banquises[0], new Vector3(-50,0,0), Quaternion.identity);
+        }
     }
 }

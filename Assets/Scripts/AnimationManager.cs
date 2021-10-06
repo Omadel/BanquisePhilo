@@ -11,14 +11,14 @@ public class AnimationManager : MonoBehaviour
     {
         if (m_animator.GetBool("walk"))
         {
-            if(m_rigidbody.velocity.magnitude <= 0f)
+            if(m_rigidbody.velocity.magnitude <= 0.1f)
             {
                 m_animator.SetBool("walk", false);
             }
         }
         else
         {
-            if (m_rigidbody.velocity.magnitude > 0f)
+            if (m_rigidbody.velocity.magnitude > 0.1f)
             {
                 m_animator.SetBool("walk", true);
             }
