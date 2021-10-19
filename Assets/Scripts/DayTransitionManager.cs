@@ -73,7 +73,7 @@ public class DayTransitionManager : MonoBehaviour
         }
         else
         {
-            Invoke("exe", 3.5f);
+            Invoke("exe", 3.2f);
 
         }
 
