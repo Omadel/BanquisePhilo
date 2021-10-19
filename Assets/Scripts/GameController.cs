@@ -8,6 +8,7 @@ public class GameController : MonoBehaviour {
 
     [SerializeField] private InputActionReference actionButton;
     [SerializeField] private GameObject[] maps;
+    [SerializeField] private GameObject bear;
 
     public enum GameSate { GoEat, GoSleep, DayTransition, EndGame }
 
@@ -16,6 +17,8 @@ public class GameController : MonoBehaviour {
     private bool bearTriggerObjective = false;
 
     public CMF.SimpleWalkerController bearController;
+
+    private bool a = false;
 
     private void Awake()
     {
@@ -48,6 +51,11 @@ public class GameController : MonoBehaviour {
                 bearController.enabled = true;
             }
         }
+
+        if (a)
+        {
+            bear.transform.position = new Vector3(0f, -320f, 0f);
+        }
     }
 
     private void Action()
@@ -62,10 +70,12 @@ public class GameController : MonoBehaviour {
                 m_GameState = GameSate.GoSleep;
             } else if(m_GameState == GameSate.GoSleep) {
                 if(DayTransitionManager.instance.dayIndex == DayTransitionManager.instance.dayTexts.Length) {
+                    bear.GetComponent<Rigidbody>().velocity = Vector3.zero;
                     WinGame();
                 } else {
                     m_GameState = GameSate.DayTransition;
                     DayTransitionManager.instance.InitDayTransition();
+                    bear.GetComponent<Rigidbody>().velocity = Vector3.zero;
                 }
             }
             bearTriggerObjective = false;
@@ -113,5 +123,6 @@ public class GameController : MonoBehaviour {
                     .OnComplete(() => map.SetActive(false));
             }
         }
+        a = true;
     }
 }

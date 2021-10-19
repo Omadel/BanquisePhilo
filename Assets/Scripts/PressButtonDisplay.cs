@@ -22,12 +22,12 @@ public class PressButtonDisplay : MonoBehaviour
     {
         pressButton.GetComponent<TMP_Text>().text = $"Press E to {newPressButtonText} !";
         pressButton.LeanAlpha(1f, 0.5f);
-        pressButton.transform.LeanMoveLocalY(-500f, 0.5f);
+        pressButton.transform.LeanMoveLocalY(-500f, 0.2f);
     }
 
     public void Disable()
     {
         pressButton.LeanAlpha(0f, 0.5f);
-        pressButton.transform.LeanMoveLocalY(-600f, 0.5f);
+        pressButton.transform.LeanMoveLocalY(-600f, 0.2f);
     }
 }

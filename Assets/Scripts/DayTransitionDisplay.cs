@@ -35,6 +35,7 @@ public class DayTransitionDisplay : MonoBehaviour
                 TimeOfDayHandeler.Instance.Swap();
             }
             TimeOfDayHandeler.Instance.ReseTimeOfDay();
+            DayTransitionManager.instance.SpawnDay();
             });
 
 

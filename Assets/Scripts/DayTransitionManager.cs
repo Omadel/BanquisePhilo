@@ -50,19 +50,37 @@ public class DayTransitionManager : MonoBehaviour
             tempCurrDayText = dayTexts[dayIndex];
         }
 
-        if(banquise != null)
-        {
-            Destroy(banquise);
-        }
-
-        banquise = Instantiate(banquises[dayIndex], new Vector3(-50,0,0),Quaternion.identity);
-        lear.transform.position = learPos[dayIndex].position;
-        objective.transform.position = objectivePos[dayIndex].position;
-        bear.transform.position = spawnPos[dayIndex].position;
 
 
         InitDaytTransitionEvent?.Invoke(tempPreviousDayText, tempCurrDayText);
 
         dayIndex++;
+    }
+
+    public void SpawnDay()
+    {
+        if (banquise != null)
+        {
+            Destroy(banquise);
+        }
+
+        if(dayIndex != 3)
+        {
+            banquise = Instantiate(banquises[dayIndex], new Vector3(-50, 0, 0), Quaternion.identity);
+            lear.transform.position = learPos[dayIndex].position;
+            objective.transform.position = objectivePos[dayIndex].position;
+            bear.transform.position = spawnPos[dayIndex].position;
+        }
+        else
+        {
+            Invoke("exe", 3.5f);
+
+        }
+
+    }
+
+    private void exe()
+    {
+        GameController.instance.WinGame();
     }
 }

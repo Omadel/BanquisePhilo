@@ -9,20 +9,28 @@ public class AnimationManager : MonoBehaviour
 
     private void Update()
     {
-        if (m_animator.GetBool("walk"))
+        if (this.GetComponent<CMF.SimpleWalkerController>().enabled)
         {
-            if(m_rigidbody.velocity.magnitude <= 0.1f)
+            if (m_animator.GetBool("walk"))
             {
-                m_animator.SetBool("walk", false);
+                if (m_rigidbody.velocity.magnitude <= 0.1f)
+                {
+                    m_animator.SetBool("walk", false);
+                }
+            }
+            else
+            {
+                if (m_rigidbody.velocity.magnitude > 0.1f)
+                {
+                    m_animator.SetBool("walk", true);
+                }
             }
         }
         else
         {
-            if (m_rigidbody.velocity.magnitude > 0.1f)
-            {
-                m_animator.SetBool("walk", true);
-            }
+            m_animator.SetBool("walk", false);
         }
+
     }
 
 }
