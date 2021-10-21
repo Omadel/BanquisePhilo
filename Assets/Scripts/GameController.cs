@@ -2,6 +2,7 @@ using DG.Tweening;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 
 public class GameController : MonoBehaviour {
     public static GameController instance;
@@ -18,7 +19,7 @@ public class GameController : MonoBehaviour {
 
     public CMF.SimpleWalkerController bearController;
 
-    private bool a = false;
+    private bool gameEnded = false;
 
     private void Awake()
     {
@@ -52,7 +53,7 @@ public class GameController : MonoBehaviour {
             }
         }
 
-        if (a)
+        if (gameEnded)
         {
             bear.transform.position = new Vector3(0f, -320f, 0f);
         }
@@ -123,6 +124,12 @@ public class GameController : MonoBehaviour {
                     .OnComplete(() => map.SetActive(false));
             }
         }
-        a = true;
+        gameEnded = true;
+        Invoke("EndScreen", 15f);
+    }
+
+    private void EndScreen()
+    {
+        SceneManager.LoadScene("MainMenu");
     }
 }

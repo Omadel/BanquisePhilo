@@ -26,7 +26,6 @@ public class DayTransitionManager : MonoBehaviour
         InitDayTransition();
     }
 
-
     public void InitDayTransition()
     {
         if(dayIndex >= dayTexts.Length) { return; }
@@ -49,8 +48,6 @@ public class DayTransitionManager : MonoBehaviour
             tempPreviousDayText = dayTexts[dayIndex - 1];
             tempCurrDayText = dayTexts[dayIndex];
         }
-
-
 
         InitDaytTransitionEvent?.Invoke(tempPreviousDayText, tempCurrDayText);
 
@@ -77,6 +74,11 @@ public class DayTransitionManager : MonoBehaviour
 
         }
 
+        GameObject[] footSteps = GameObject.FindGameObjectsWithTag("Footstep");
+        foreach (GameObject item in footSteps)
+        {
+            Destroy(item);
+        }
     }
 
     private void exe()
