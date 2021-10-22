@@ -20,7 +20,7 @@ Material:
     serializedVersion: 3
     m_TexEnvs:
     - _Distortion:
-        m_Texture: {fileID: 2800000, guid: 3df3a814e461a5e4bb03cad9dd2306e5, type: 3}
+        m_Texture: {fileID: 2800000, guid: 52003a27714da5f4e8f9da8de9afaca4, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _Mask:
@@ -36,14 +36,15 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Floats:
-    - _Distortion_Amount: 0.205
-    - _Float5: 1.42
-    - _Float6: 0.014
-    - _Float8: 0.21
-    - _Glossiness: 0.08
-    - _Opacity: 0.98
-    - _ScrollSpeed: 0.054
+    - _Distortion_Amount: 0
+    - _Float5: 0.7
+    - _Float6: -2.5
+    - _Float8: 0.025
+    - _Glossiness: 0.9
+    - _Opacity: 1
+    - _ScrollSpeed: 0.025
     - __dirty: 0
     m_Colors:
-    - _Caustics: {r: 0, g: 1, b: 0.7627773, a: 0}
+    - _Caustics: {r: 1, g: 1, b: 1, a: 0}
     - _Water: {r: 0, g: 0.2949355, b: 0.3773585, a: 0}
+  m_BuildTextureStacks: []
