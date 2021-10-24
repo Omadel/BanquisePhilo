@@ -12,7 +12,7 @@ public class DayTransitionManager : MonoBehaviour
     [SerializeField] private Transform[] objectivePos = new Transform[0];
     [SerializeField] private Transform[] spawnPos = new Transform[0];
 
-    public int dayIndex = 0;
+    public int dayIndex = -1;
 
     public static event Action<string, string> InitDaytTransitionEvent;
 
@@ -61,7 +61,7 @@ public class DayTransitionManager : MonoBehaviour
             Destroy(banquise);
         }
 
-        if(dayIndex != 3)
+        if(dayIndex != 4)
         {
             banquise = Instantiate(banquises[dayIndex], new Vector3(-50, 0, 0), Quaternion.identity);
             lear.transform.position = learPos[dayIndex].position;
@@ -71,7 +71,6 @@ public class DayTransitionManager : MonoBehaviour
         else
         {
             Invoke("exe", 3.2f);
-
         }
 
         GameObject[] footSteps = GameObject.FindGameObjectsWithTag("Footstep");

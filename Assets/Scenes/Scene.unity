@@ -770,7 +770,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 0527ea2144824f44fa6e51a5bfe68994, type: 2}
+  - {fileID: 2100000, guid: b62843a4d608e5c48b420e2db3512ad8, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1030,7 +1030,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &451219598
 Transform:
   m_ObjectHideFlags: 0
@@ -1861,23 +1861,28 @@ MonoBehaviour:
   - 22 Septembre 2020
   - 15 Janvier 2027
   - 1 Mars 2054
+  - 10 juillet 2080
   bear: {fileID: 1475334031}
   lear: {fileID: 1868490464}
   objective: {fileID: 126769870}
   banquise: {fileID: 1615463236}
   banquises:
+  - {fileID: 0}
   - {fileID: 8754824867672856291, guid: 48e4d093fc292974cb39ea8b2cb772ea, type: 3}
   - {fileID: 2062653486744416303, guid: 2d5c6986440ca9d488a7c3046fd22391, type: 3}
   - {fileID: 5930725099465593384, guid: fd63f8d71ad151b4f93a4312e63c2c03, type: 3}
   learPos:
+  - {fileID: 0}
   - {fileID: 1139927836}
   - {fileID: 2109842315}
   - {fileID: 1979325968}
   objectivePos:
+  - {fileID: 0}
   - {fileID: 1022720562}
   - {fileID: 498810229}
   - {fileID: 1817733285}
   spawnPos:
+  - {fileID: 0}
   - {fileID: 2022245850}
   - {fileID: 1526827113}
   - {fileID: 1195093319}
