@@ -510,7 +510,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.28773582, g: 1, b: 0.44836575, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -3151,6 +3151,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 428299267}
     m_Modifications:
+    - target: {fileID: 1096523968574972196, guid: 1ff6488b9d634ef42bece16a84dd3c8d, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: f0ae2661ad392bb40b0c8179c6d55f4a, type: 2}
     - target: {fileID: 6927317017807178399, guid: 1ff6488b9d634ef42bece16a84dd3c8d, type: 3}
       propertyPath: m_Name
       value: Bear
