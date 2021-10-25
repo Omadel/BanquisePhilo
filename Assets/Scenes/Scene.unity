@@ -510,7 +510,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.28773582, g: 1, b: 0.44836575, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -735,7 +735,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &385384504
 Transform:
   m_ObjectHideFlags: 0
@@ -1250,6 +1250,11 @@ Transform:
   m_Father: {fileID: 1213420136}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
+--- !u!1 &779117309 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4929484215663160778, guid: b0385baa6682ffc4f8ec46a3e582a39e, type: 3}
+  m_PrefabInstance: {fileID: 521857829}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &872743692
 GameObject:
   m_ObjectHideFlags: 0
@@ -1856,6 +1861,7 @@ MonoBehaviour:
   - {fileID: 2022245850}
   - {fileID: 1526827113}
   - {fileID: 1195093319}
+  planet: {fileID: 1508098770}
   dayIndex: 0
 --- !u!114 &1354811763
 MonoBehaviour:
@@ -1871,7 +1877,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   actionButton: {fileID: 8206659529239485414, guid: aa68d3e8370706d41880ee2d05878c70, type: 3}
   maps:
-  - {fileID: 0}
+  - {fileID: 779117309}
   - {fileID: 126769870}
   - {fileID: 1868490464}
   - {fileID: 2053475972}
@@ -2114,6 +2120,11 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: -3441492313242690119, guid: 9bd72dd9e537b9c478a03d266c902ce8, type: 3}
+--- !u!1 &1508098770 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6837180035923096799, guid: 2647a3e41ef1c194e992912f7584b02f, type: 3}
+  m_PrefabInstance: {fileID: 6837180037434542817}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1526827112
 GameObject:
   m_ObjectHideFlags: 0
@@ -3142,6 +3153,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Planet
       objectReference: {fileID: 0}
+    - target: {fileID: 6837180035923096799, guid: 2647a3e41ef1c194e992912f7584b02f, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2647a3e41ef1c194e992912f7584b02f, type: 3}
 --- !u!4 &6837180037434542818 stripped
@@ -3156,6 +3171,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 428299267}
     m_Modifications:
+    - target: {fileID: 1096523968574972196, guid: 1ff6488b9d634ef42bece16a84dd3c8d, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: f0ae2661ad392bb40b0c8179c6d55f4a, type: 2}
     - target: {fileID: 6927317017807178399, guid: 1ff6488b9d634ef42bece16a84dd3c8d, type: 3}
       propertyPath: m_Name
       value: Bear

@@ -12,6 +12,7 @@ public class DayTransitionManager : MonoBehaviour
     [SerializeField] private Transform[] learPos = new Transform[0];
     [SerializeField] private Transform[] objectivePos = new Transform[0];
     [SerializeField] private Transform[] spawnPos = new Transform[0];
+    [SerializeField] private GameObject planet;
 
     public int dayIndex = -1;
 
@@ -71,6 +72,7 @@ public class DayTransitionManager : MonoBehaviour
         }
         else
         {
+            planet.SetActive(true);
             Invoke("exe", 3.2f);
         }
 
