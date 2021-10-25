@@ -20,13 +20,13 @@ Material:
     serializedVersion: 3
     m_TexEnvs:
     - _Edge:
-        m_Texture: {fileID: 2800000, guid: 52003a27714da5f4e8f9da8de9afaca4, type: 3}
+        m_Texture: {fileID: 2800000, guid: 61ab6e499323e1f4c9731bb3aa5d2e0a, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Floats:
     - _EdgeDistance: 1.38
-    - _EdgeFoamTile: 1.3
-    - _EdgePower: 0.299
+    - _EdgeFoamTile: 0.75
+    - _EdgePower: 0.1
     - _Smoothness: 0.95
     - _WaveHeight: 0.02
     - _WaveSpeed: 0.21
