@@ -9,7 +9,7 @@ namespace CMF
     public class SimpleWalkerController : Controller
     {
         private Mover mover;
-        float currentVerticalSpeed = 0f;
+        public float currentVerticalSpeed = 0f;
         bool isGrounded;
         public float movementSpeed = 7f;
         public float jumpSpeed = 10f;

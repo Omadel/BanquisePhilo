@@ -4,6 +4,7 @@ using UnityEngine;
 public class DayTransitionManager : MonoBehaviour
 {
     public static DayTransitionManager instance;
+    public Transform[] SpawnPos => spawnPos;
 
     [SerializeField] public string[] dayTexts = new string[0];
     [SerializeField] private GameObject bear, lear, objective, banquise;
